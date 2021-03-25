@@ -29,11 +29,13 @@ namespace cpu_monitor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
             this.elementHost2 = new System.Windows.Forms.Integration.ElementHost();
             this.MainChart = new LiveCharts.Wpf.CartesianChart();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
+            this.MainTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,16 +50,6 @@ namespace cpu_monitor
             this.panel1.Size = new System.Drawing.Size(300, 295);
             this.panel1.TabIndex = 0;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost1.Location = new System.Drawing.Point(0, 0);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(300, 295);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.cartesianChart1;
-            // 
             // elementHost2
             // 
             this.elementHost2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -68,6 +60,21 @@ namespace cpu_monitor
             this.elementHost2.Text = "elementHost2";
             this.elementHost2.Child = this.MainChart;
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(300, 295);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.cartesianChart1;
+            // 
+            // MainTimer
+            // 
+            this.MainTimer.Interval = 1000;
+            this.MainTimer.Tick += new System.EventHandler(this.MainTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -77,7 +84,7 @@ namespace cpu_monitor
             this.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -93,6 +100,7 @@ namespace cpu_monitor
         private LiveCharts.Wpf.CartesianChart cartesianChart1;
         private System.Windows.Forms.Integration.ElementHost elementHost2;
         private LiveCharts.Wpf.CartesianChart MainChart;
+        private System.Windows.Forms.Timer MainTimer;
     }
 }
 
